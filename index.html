@@ -3,6 +3,9 @@
   <head>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <script>
       function getScheme(){
         let color = document.getElementById("input").value.substring(1)
@@ -13,14 +16,19 @@
         .then(response => response.json())
         .then(data => {
           console.log(data)
-          let html = ''
+          let colorsHtml = ''
+          let hexHtml = ''
           let delay = 0;
           for(colors of data.colors){
             delay+=100;
-            html+= `<div data-aos="flip-right" data-aos-delay="${delay}" class="color" style="background-color:${colors.hex.value}">  </div>
-`
+            colorsHtml+= `<div data-aos="flip-right" data-aos-delay="${delay}" class="color" style="background-color:${colors.hex.value}">  </div>`
+            hexHtml+= `<div data-aos="flip-right" data-aos-delay="${delay}" class="hex-values"> ${colors.hex.value} </div>`
+
           }
-          document.getElementById("colors").innerHTML= html
+          document.getElementById("colors").innerHTML= colorsHtml
+          document.getElementById("hex-container").innerHTML= hexHtml
+          document.getElementById("hex-container").style = "display: flex; justify-content: space-around;"
+
           
         }
         )
@@ -31,7 +39,7 @@
     <title>Color Scheme Generator</title>
   </head>
   <body>
-    <div data-aos="fade-down" class="app" id="app">
+    <div class="app" id="app">
       <div class="header">
         <input id="input"  type="color"/>
         <select id="color-selector">
@@ -46,7 +54,21 @@
       </select>
       <button onClick="getScheme()"> Get Color Scheme</button>
     </div>
-    <div id="colors" class="colors">
+    <div id="colors" class="colors"> 
+
+      <div class="title-container"> <h1> 
+        <span data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000"
+        style="color: #ffbb00">Color</span>
+        <br> <span data-aos="fade-down" data-aos-delay="300" data-aos-duration="1000" style="color:#BB00FF">Scheme</span> 
+        <br><span data-aos="fade-down" data-aos-delay="500" data-aos-duration="1000" style="color:#00d5ff">Generator</span> 
+        </h1>
+      </div>
+
+    </div>
+    <div id="hex" class="hex"> 
+      <div id="hex-container" style="display: flex;
+      justify-content: space-around"> </div>
+    </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
@@ -55,5 +77,8 @@
 </html>
 
 <script>
-  AOS.init();
+  AOS.init({
+    once: true,
+    offset: -1000
+  });
 </script>
