@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script>
       function getScheme(){
         let color = document.getElementById("input").value.substring(1)
@@ -19,11 +19,12 @@
           let colorsHtml = ''
           let hexHtml = ''
           let delay = 0;
+          let uniqueId = 0;
           for(colors of data.colors){
             delay+=100;
             colorsHtml+= `<div data-aos="flip-right" data-aos-delay="${delay}" class="color" style="background-color:${colors.hex.value}">  </div>`
-            hexHtml+= `<div data-aos="flip-right" data-aos-delay="${delay}" class="hex-values"> ${colors.hex.value} </div>`
-
+            hexHtml+= `<div id="hex-value-${uniqueId}" data-aos="flip-right" data-aos-delay="${delay}" class="hex-values" onclick="copyHexValue(${uniqueId})"> ${colors.hex.value} </div>`
+            uniqueId++;
           }
           document.getElementById("colors").innerHTML= colorsHtml
           document.getElementById("hex-container").innerHTML= hexHtml
@@ -33,6 +34,21 @@
         }
         )
       }
+    </script>
+    <script>
+      function copyHexValue(id) {
+        var range = document.createRange();
+                    range.selectNode(document.getElementById(`hex-value-${id}`));
+                    window.getSelection().removeAllRanges(); // clear current selection
+                    window.getSelection().addRange(range); // to select text
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();// to deselect
+
+      // Alert the copied text
+      alert("Copied to clipboard");
+}
+
+
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

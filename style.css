@@ -30,7 +30,7 @@ h1{
   background: #FFFFFF;
   padding-top: 25px;
   padding-bottom: 25px;
-  padding-right: 15px;
+  padding-right: 6px;
   padding-left: 15px;
   margin: 0 auto;
   text-align: center;
@@ -56,6 +56,9 @@ h1{
   cursor: pointer;
   margin: 15px;
   line-height: 46px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+
 
 }
 
@@ -66,22 +69,26 @@ h1{
 }
 
 button {
-
   white-space: nowrap;
-
-
-padding: 15px;
-
-/* white */
-background: #FFFFFF;
-/* gray/300 */
-border: 1px solid #D1D5DB;
-/* shadow/sm */
-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-border-radius: 4px;
-margin-left: 15px;
+  padding: 15px;
+  /* white */
+  background: black;
+  color: white;
+  /* gray/300 */
+  border: 1px solid #D1D5DB;
+  /* shadow/sm */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  margin-left: 15px;
   margin-right: 60px;
+  opacity: 1;
+  transition: 0.3s;
+  font-family: 'Poppins', sans-serif;
+
 }
+
+button:hover {opacity: 0.7}
+
 
 input{
   width: 61px;
@@ -93,18 +100,15 @@ input{
 
 select{
   width: 312px;
-height: 42px;
-
-
-/* white */
-
-background: #FFFFFF;
-/* gray/300 */
-
-border: 1px solid #D1D5DB;
-/* shadow/sm */
-
-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-border-radius: 6px;
+  height: 42px;
+  padding-left: 10px;
+  /* white */
+  background: #FFFFFF;
+  /* gray/300 */
+  border: 1px solid #D1D5DB;
+  /* shadow/sm */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
 
 }
