@@ -2,14 +2,37 @@
 <html lang="en">
   <head>
     <script type="module" src="/main.js"></script>
-    <script> function refreshColor(){
-      let color = document.getElementById("color-selector").value
-      document.querySelector('#app').innerHTML = `
-      <div>
-      <input type="color" value="${color}"/>
-      </div>
-      ` 
-    }</script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      function getScheme(){
+        let color = document.getElementById("input").value.substring(1)
+        console.log(color)
+        let mode = document.getElementById("color-selector").value
+        console.log(mode)
+      fetch(`https://www.thecolorapi.com/scheme?hex=${color}&mode=${mode}&format=json&count=6`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          let html = ''
+          for(colors of data.colors){
+            html+= `<div style="background-color:${colors.hex.value}"> "fdfdsf" </div>
+`
+          }
+          document.getElementById("colors").innerHTML= html
+          
+      //     `
+      //     <div style="background-color:${data.colors[0].hex.value}"> "fdfdsf" </div>
+      // <div></div>
+      // <div></div>
+      // <div></div>
+      // <div></div>
+          
+      //     `
+          
+        }
+        )
+      }
+    </script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,12 +40,22 @@
   </head>
   <body>
     <div id="app">
+      <input id="input"  type="color"/>
+      <select id="color-selector">
+        <option value="monochrome">Monochrome</option>
+        <option value="monochrome-dark">Monochrome-dark</option>
+        <option value="monochrome-light">Monochrome-light</option>
+        <option value="analogic">Analogic</option>
+        <option value="complement">Complement</option>
+        <option value="analogic-complement">Analogic-complement</option>
+        <option value="triad">Triad</option>
+
+      </select>
+      <button onClick="getScheme()"> Get Scheme</button>
     </div>
-    <select id="color-selector" onchange="refreshColor()">
-      <option value="#ff0022">red</option>
-      <option value="#0dff00">green</option>
-      <option value="#ff9100">orange</option>
-      <option value="#0091ff">blue</option>
-    </select>    
+    
+    <div id="colors" class="colors">
+
+    </div>
   </body>
 </html>

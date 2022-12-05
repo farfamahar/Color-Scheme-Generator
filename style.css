@@ -1,0 +1,9 @@
+.colors{
+  display: flex;
+  flex-direction: row;
+}
+
+.color-1{
+  height: 300px;
+  width: 75px;
+}
