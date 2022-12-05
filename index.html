@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script type="module" src="/main.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="style.css">
     <script>
       function getScheme(){
@@ -14,48 +14,46 @@
         .then(data => {
           console.log(data)
           let html = ''
+          let delay = 0;
           for(colors of data.colors){
-            html+= `<div style="background-color:${colors.hex.value}"> "fdfdsf" </div>
+            delay+=100;
+            html+= `<div data-aos="flip-right" data-aos-delay="${delay}" class="color" style="background-color:${colors.hex.value}">  </div>
 `
           }
           document.getElementById("colors").innerHTML= html
-          
-      //     `
-      //     <div style="background-color:${data.colors[0].hex.value}"> "fdfdsf" </div>
-      // <div></div>
-      // <div></div>
-      // <div></div>
-      // <div></div>
-          
-      //     `
           
         }
         )
       }
     </script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Color Scheme Generator</title>
   </head>
   <body>
-    <div id="app">
-      <input id="input"  type="color"/>
-      <select id="color-selector">
-        <option value="monochrome">Monochrome</option>
-        <option value="monochrome-dark">Monochrome-dark</option>
-        <option value="monochrome-light">Monochrome-light</option>
-        <option value="analogic">Analogic</option>
-        <option value="complement">Complement</option>
-        <option value="analogic-complement">Analogic-complement</option>
-        <option value="triad">Triad</option>
-
+    <div data-aos="fade-down" class="app" id="app">
+      <div class="header">
+        <input id="input"  type="color"/>
+        <select id="color-selector">
+          <option value="monochrome">Monochrome</option>
+          <option value="monochrome-dark">Monochrome-dark</option>
+          <option value="monochrome-light">Monochrome-light</option>
+          <option value="analogic">Analogic</option>
+          <option value="complement">Complement</option>
+          <option value="analogic-complement">Analogic-complement</option>
+          <option value="triad">Triad</option>
+        </div>
       </select>
-      <button onClick="getScheme()"> Get Scheme</button>
+      <button onClick="getScheme()"> Get Color Scheme</button>
     </div>
-    
     <div id="colors" class="colors">
-
-    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
+
+<script>
+  AOS.init();
+</script>
