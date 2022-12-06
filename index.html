@@ -9,9 +9,7 @@
     <script>
       function getScheme(){
         let color = document.getElementById("input").value.substring(1)
-        console.log(color)
         let mode = document.getElementById("color-selector").value
-        console.log(mode)
       fetch(`https://www.thecolorapi.com/scheme?hex=${color}&mode=${mode}&format=json&count=6`)
         .then(response => response.json())
         .then(data => {
@@ -28,9 +26,7 @@
           }
           document.getElementById("colors").innerHTML= colorsHtml
           document.getElementById("hex-container").innerHTML= hexHtml
-          document.getElementById("hex-container").style = "display: flex; justify-content: space-around;"
-
-          
+          document.getElementById("hex-container").style = "display: flex; justify-content: space-around;"    
         }
         )
       }
@@ -47,8 +43,6 @@
       // Alert the copied text
       alert("Copied to clipboard");
 }
-
-
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,10 +67,10 @@
     <div id="colors" class="colors"> 
 
       <div class="title-container"> <h1> 
-        <span data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000"
+        <span data-aos="fade-down" data-aos-delay="300" data-aos-duration="1000"
         style="color: #ffbb00">Color</span>
-        <br> <span data-aos="fade-down" data-aos-delay="300" data-aos-duration="1000" style="color:#BB00FF">Scheme</span> 
-        <br><span data-aos="fade-down" data-aos-delay="500" data-aos-duration="1000" style="color:#00d5ff">Generator</span> 
+        <br> <span data-aos="fade-down" data-aos-delay="500" data-aos-duration="1000" style="color:#BB00FF">Scheme</span> 
+        <br><span data-aos="fade-down" data-aos-delay="700" data-aos-duration="1000" style="color:#00d5ff">Generator</span> 
         </h1>
       </div>
 
